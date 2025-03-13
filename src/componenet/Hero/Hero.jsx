@@ -1,110 +1,114 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import heroImage from "../../assets/heroImage.jpg";
+import heroImage1 from "../../assets/heroImage1.avif";
+import heroImage2 from "../../assets/heroImage2.jpeg";
+import frist50 from "../../assets/Feugo Images/coupens/frist50.png";
+import items49 from "../../assets/Feugo Images/coupens/items49.png";
+import holi20 from "../../assets/Feugo Images/coupens/Holi20.png";
+import items99 from "../../assets/Feugo Images/coupens/items99.png";
 
 const Hero = () => {
-  const bannerImages = [
-    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1493770348161-369560ae357d?q=80&w=2070&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2074&auto=format&fit=crop",
-  ];
+  const [currentImage, setCurrentImage] = React.useState(0);
+  const bannerImages = [heroImage, heroImage1, heroImage2];
 
   const offers = [
-    {
-      id: 1,
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947",
-      title: "50% OFF on first order",
-      code: "FIRST50",
-      description: "Valid on all restaurants",
-    },
-    {
-      id: 2,
-      image: "https://images.unsplash.com/photo-1559847844-5315695dadae",
-      title: "Free delivery above ₹199",
-      code: "FREEDEL",
-      description: "Limited time offer",
-    },
-    {
-      id: 3,
-      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38",
-      title: "20% OFF on orders above ₹499",
-      code: "SAVE20",
-      description: "All payment methods accepted",
-    },
-    {
-      id: 4,
-      image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187",
-      title: "Special Weekend Offer",
-      code: "WEEKEND",
-      description: "Only for weekend orders",
-    },
+    { id: 1, image: frist50 },
+    { id: 2, image: holi20 },
+    { id: 3, image: items49 },
+    { id: 4, image: items99 },
   ];
 
-  const [currentImage, setCurrentImage] = React.useState(0);
+  React.useEffect(() => {
+    bannerImages.forEach((image) => {
+      const img = new Image();
+      img.src = image;
+    });
+  }, []);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % bannerImages.length);
-    }, 10000);
+    }, 100000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div>
-      <div className="relative h-[50vh] overflow-hidden">
+    <section className="relative">
+      {/* Hero Banner */}
+      <div className="relative h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentImage}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url(${bannerImages[currentImage]})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
+            transition={{
+              duration: 1,
+              ease: "easeInOut",
             }}
+            className="absolute inset-0"
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-food-yellow-900/10 to-transparent" />
+            <img
+              src={bannerImages[currentImage]}
+              alt="Hero Banner"
+              className="w-full h-full object-cover transform scale-105"
+              style={{ willChange: "transform" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent" />
           </motion.div>
         </AnimatePresence>
+
+        {/* Hero Content */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center px-4 md:px-8 max-w-4xl">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+            >
+              Delicious Food Delivered To Your Doorstep
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-lg md:text-xl text-white/90 mb-8"
+            >
+              Order from your favorite restaurants with exclusive offers
+            </motion.p>
+          </div>
+        </div>
       </div>
 
-      {/* Enhanced Offers Section */}
-      <div className="px-4 py-6 lg:max-w-7xl lg:mx-auto bg-food-yellow-50">
-        <h2 className="text-lg lg:text-xl font-bold text-brand-dark mb-4">
-          Best Offers for You
-        </h2>
+      {/* Offers Section */}
+      <div className="relative -mt-2 px-2 md:px-2 lg:px-4 max-w-7xl mx-auto">
         <motion.div
-          className="flex gap-4 overflow-x-auto lg:grid lg:grid-cols-4 pb-4 scrollbar-hide"
-          whileTap={{ cursor: "grabbing" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="bg-white rounded-xl shadow-xl p-2 md:p-8"
         >
-          {offers.map((offer) => (
-            <motion.div
-              key={offer.id}
-              className="flex-shrink-0 w-72 lg:w-full h-32 relative rounded-lg overflow-hidden cursor-pointer shadow-md hover:shadow-lg transition-shadow duration-300"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <img
-                src={offer.image}
-                alt={offer.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-food-yellow-900/80 to-transparent flex flex-col justify-end p-4">
-                <h3 className="text-white font-semibold">{offer.title}</h3>
-                <p className="text-food-yellow-100 text-sm mb-1">
-                  {offer.description}
-                </p>
-                <span className="inline-block px-2 py-1 bg-white/20 rounded text-yellow-200 text-sm">
-                  Use code: {offer.code}
-                </span>
-              </div>
-            </motion.div>
-          ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {offers.map((offer) => (
+              <motion.div
+                key={offer.id}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+              >
+                <img
+                  src={offer.image}
+                  alt={`Offer ${offer.id}`}
+                  className="w-full h-32 md:h-40 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 

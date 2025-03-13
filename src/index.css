@@ -39,3 +39,28 @@
     scrollbar-width: none;
   }
 }
+
+:root {
+  /* Primary Colors */
+  --color-primary-50: #fff9e5;
+  --color-primary-100: #fff2cc;
+  --color-primary-200: #ffe699;
+  --color-primary-300: #ffd966;
+  --color-primary-400: #ffcc33;
+  --color-primary-500: #ffc000;
+  --color-primary-600: #e6ac00;
+  --color-primary-700: #cc9900;
+  --color-primary-800: #b38600;
+  --color-primary-900: #996600;
+
+  /* Secondary Colors */
+  --color-secondary-500: #ff3333;
+
+  /* Neutral Colors */
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+
+  /* Background Colors */
+  --color-background-light: #ffffff;
+  --color-background-dark: #f9f9f9;
+}

@@ -4,6 +4,7 @@ import Navbar from "./componenet/Nvabar/Navbar";
 import Home from "./pages/Home";
 import LocationModal from "./componenet/Location/Location";
 import RestaruentPage from "./pages/RestaruentPage/RestaruentPage";
+import Cart from "./pages/Cart/Cart";
 
 function App() {
   const [showLocation, setShowLocation] = useState(false);
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/restaurant/:id" element={<RestaruentPage />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>
     </BrowserRouter>
