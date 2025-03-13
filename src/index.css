@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@tailwind utilities;
+
+/* Show scrollbar on mobile */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #ffc000;
+    border-radius: 10px;
+    border: none;
+  }
+
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #ffc000 #f1f1f1;
+  }
+}
+
+/* Hide scrollbar on larger screens */
+@media (min-width: 769px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
