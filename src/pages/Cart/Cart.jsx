@@ -73,7 +73,7 @@ const Cart = () => {
                 <h2 className="font-medium text-gray-900">{restaurant.name}</h2>
                 <div className="flex items-center gap-2 text-sm text-gray-500 mt-1">
                   <BiTime />
-                  <span>{restaurant.deliveryTime} mins delivery</span>
+                  <span>{restaurant.deliveryTime} mins to preparing order</span>
                 </div>
               </div>
             </div>

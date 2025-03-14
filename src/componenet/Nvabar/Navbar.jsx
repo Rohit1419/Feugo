@@ -9,6 +9,19 @@ import { FiClock, FiTrendingUp } from "react-icons/fi";
 
 import Location from "../Location/Location";
 
+const placeholders = [
+  "Craving midnight biryani? We've got you! 🌙",
+  "Pizza time? Your cheesy adventure awaits! 🍕",
+  "Butter chicken calling your name? Answer it! 🍗",
+  "Time for some tandoori magic ✨",
+  "Your taste buds deserve a party today! 🎉",
+  "Hungry? Let's fix that right now 🚀",
+  "Pani puri cravings hitting hard? We feel you! 💫",
+  "Your favorite restaurants are missing you 💝",
+  "Ready for a food adventure? Let's go! 🌟",
+  "Discover new flavors in your neighborhood 🍽️",
+];
+
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -17,21 +30,9 @@ const Navbar = () => {
   const [currentLocation, setCurrentLocation] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [placeholder, setPlaceholder] = useState(
-    "Search for restaurants and food"
-  );
-  const searchRef = useRef(null);
+  const [placeholder, setPlaceholder] = useState(placeholders[0]);
 
-  const placeholders = [
-    "Craving pizza? Find pickup options nearby",
-    "Hungry? Order ahead and skip the line",
-    "Search for your comfort food to go",
-    "Discover top-rated takeaway spots near you",
-    "Find the best deals on pickup orders",
-    "Order breakfast, lunch, or dinner for pickup",
-    "Explore new cuisines for takeaway",
-    "Late night cravings? Find open restaurants",
-  ];
+  const searchRef = useRef(null);
 
   const trendingSearches = [
     { text: "Best Vada Pav in Mumbai", tag: "Trending", icon: "🔥" },
@@ -57,10 +58,17 @@ const Navbar = () => {
   useEffect(() => {
     if (!isFocused) {
       const interval = setInterval(() => {
-        setPlaceholder(
-          placeholders[Math.floor(Math.random() * placeholders.length)]
-        );
-      }, 3000);
+        setPlaceholder((prev) => {
+          const newPlaceholder =
+            placeholders[Math.floor(Math.random() * placeholders.length)];
+          return newPlaceholder !== prev
+            ? newPlaceholder
+            : placeholders[
+                (placeholders.indexOf(prev) + 1) % placeholders.length
+              ];
+        });
+      }, 2000);
+
       return () => clearInterval(interval);
     }
   }, [isFocused]);
@@ -115,7 +123,7 @@ const Navbar = () => {
                       : "text-white/70"
                   }`}
                 >
-                  Pickup from
+                  Your Location
                 </span>
                 <div className="flex items-center gap-1 group">
                   <span
@@ -166,9 +174,9 @@ const Navbar = () => {
                 placeholder={placeholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full py-2 lg:py-2.5 px-4 pl-10 bg-white rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300 shadow-sm hover:shadow-md"
                 onFocus={() => setIsFocused(true)}
-                id="main-search-input"
+                onBlur={() => setIsFocused(false)}
+                className="w-full py-2 lg:py-2.5 px-4 pl-10 bg-white rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red-500 transition-all duration-300 shadow-sm hover:shadow-md animate-placeholder"
               />
               <BiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400 text-lg" />
               {searchQuery && (

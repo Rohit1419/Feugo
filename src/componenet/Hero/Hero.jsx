@@ -63,9 +63,13 @@ const Hero = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center px-4 md:px-8 max-w-4xl">
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-2xl md:text-5xl lg:text-4xl font-bold text-white mb-6 align-bottom "
+              transition={{
+                duration: 1.0,
+                ease: "easeOut",
+              }}
+              className="text-2xl md:text-5xl lg:text-4xl font-bold text-white mb-6"
             >
               Order from your favorite restaurants with exclusive offers
             </motion.h1>

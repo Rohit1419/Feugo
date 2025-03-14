@@ -73,3 +73,22 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera */
 }
+.animate-placeholder::placeholder {
+  transition: all 0.3s ease;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0.5;
+    transform: translateY(5px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0.5;
+    transform: translateY(5px);
+  }
+}
