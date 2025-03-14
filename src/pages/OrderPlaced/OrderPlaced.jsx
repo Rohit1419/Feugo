@@ -52,6 +52,37 @@ const OrderPlaced = () => {
           </motion.p>
         </div>
 
+        {/* Coins Earned Animation */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-center mb-8 bg-amber-50 rounded-xl p-6 border border-amber-100"
+        >
+          <motion.div
+            initial={{ rotate: 0 }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="w-16 h-16  rounded-full mx-auto flex items-center justify-center mb-4"
+          >
+            <span className="text-6xl">🪙</span>
+          </motion.div>
+
+          <h2 className="text-xl font-semibold text-amber-700">
+            Congratulations! You earned{" "}
+            {Math.floor(orderDetails.totalAmount / 50)} F-Coins
+          </h2>
+
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            className="text-amber-600 mt-2"
+          >
+            Keep ordering to earn more coins and unlock exclusive rewards!
+          </motion.p>
+        </motion.div>
+
         {/* Order Details Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
