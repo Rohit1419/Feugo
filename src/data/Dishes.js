@@ -65,7 +65,8 @@ export const dishes = [
     description: "Freshly baked bread with garlic and butter",
     category: "Breads",
     isVeg: true,
-    image: "https://images.unsplash.com/photo-1601050690597-df0568f70950",
+    image:
+      "https://images.freeimages.com/images/premium/previews/2395/23955601-garlic-naan-flatbread.jpg?fmt=webp&h=350",
     customizations: [{ name: "Instructions", string: "Extra butter" }],
   },
 
@@ -78,7 +79,8 @@ export const dishes = [
     description: "Mumbai's favorite street food - spiced potato patty in bread",
     category: "Street Food",
     isVeg: true,
-    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84",
+    image:
+      "https://media.istockphoto.com/id/1257507141/photo/vada-pav-or-wada-pav-indian-desi-burger-is-a-street-food-dish-from-mumbai-maharashtra-indian.jpg?s=612x612&w=0&k=20&c=wkINH4KemesM95AFrdAUp7dVRN4-K1PorXbyQ1Jshe8=",
     customizations: [
       { name: "Spice Level", options: ["Mild", "Medium", "Hot"] },
       { name: "Instructions", string: "Extra chutney" },
@@ -92,7 +94,8 @@ export const dishes = [
     description: "Puffed rice mixed with tangy chutneys and vegetables",
     category: "Chaat",
     isVeg: true,
-    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84",
+    image:
+      "https://media.istockphoto.com/id/1157698777/photo/bhel-puri.jpg?s=612x612&w=0&k=20&c=D8eUz7EC3GD9OzAHs4blSM676fJsHqdNSXjW0UMuYE0=",
     customizations: [
       { name: "Spice Level", options: ["Mild", "Medium", "Hot"] },
       { name: "Instructions", string: "Less onion" },
@@ -120,7 +123,8 @@ export const dishes = [
     description: "Crispy puris topped with potatoes, chutneys and sev",
     category: "Chaat",
     isVeg: true,
-    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84",
+    image:
+      "https://media.istockphoto.com/id/471291293/photo/sev-puri-south-indian-savoury-snacks.jpg?s=612x612&w=0&k=20&c=pODIieXwWLsYsqPiRcP7UmapKinlyNiaYaOyzPSe8jk=",
     customizations: [
       { name: "Spice Level", options: ["Mild", "Medium", "Hot"] },
       { name: "Instructions", string: "Extra sev" },
@@ -134,7 +138,8 @@ export const dishes = [
     description: "Spicy sprouted moth beans curry with bread",
     category: "Main Course",
     isVeg: true,
-    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84",
+    image:
+      "https://media.istockphoto.com/id/1442926365/photo/famous-maharashtrian-cuisine-street-food-called-misal-pav-which-includes-spicy-curry-sprouts.jpg?s=612x612&w=0&k=20&c=Kyu46PzZRYb29vCFxmkoBeRHV2dgrTCm1Xz87sILXOM=",
     customizations: [
       { name: "Spice Level", options: ["Mild", "Medium", "Hot"] },
       { name: "Instructions", string: "Extra farsan" },
@@ -150,7 +155,8 @@ export const dishes = [
     description: "Diced chicken with peanuts in spicy sauce",
     category: "Main Course",
     isVeg: false,
-    image: "https://images.unsplash.com/photo-1585032226651-759b368d7246",
+    image:
+      "https://media.istockphoto.com/id/1225394561/photo/image-of-spicy-kung-pao-chicken-takeaway-meal-in-black-plastic-disposable-container-with.jpg?s=612x612&w=0&k=20&c=Hv-G41E0mPOWzO4NmrPOMd9ShjWsov8q-LPRDZmblV8=",
     customizations: [
       { name: "Spice Level", options: ["Mild", "Medium", "Hot"] },
       { name: "Instructions", string: "Extra peanuts" },
@@ -189,7 +195,8 @@ export const dishes = [
     description: "Spicy fried rice with vegetables in Schezwan sauce",
     category: "Rice",
     isVeg: true,
-    image: "https://images.unsplash.com/photo-1585032226651-759b368d7246",
+    image:
+      "https://media.istockphoto.com/id/1175434591/photo/fried-rice-with-ketchup-and-soy-sauce.jpg?s=612x612&w=0&k=20&c=h4PypFpU_ktxXBGlw6P-K6t6WfDeJ6PMcCEXb7rwxqk=",
     customizations: [
       { name: "Spice Level", options: ["Mild", "Medium", "Hot"] },
       { name: "Instructions", string: "Extra sauce" },
@@ -203,7 +210,8 @@ export const dishes = [
     description: "Crispy fried chicken tossed in honey sauce",
     category: "Starters",
     isVeg: false,
-    image: "https://images.unsplash.com/photo-1585032226651-759b368d7246",
+    image:
+      "https://media.istockphoto.com/id/1098318620/photo/the-concept-of-indian-cuisine-baked-chicken-wings-and-legs-in-honey-mustard-sauce-serving.jpg?s=612x612&w=0&k=20&c=--W_gsVHQ2MxyFkqi7B1WjcsPgnuP2ROYSvPHEIFmnw=",
     customizations: [{ name: "Instructions", string: "Extra crispy" }],
   },
   // Dosa Plaza (R004)
@@ -215,7 +223,8 @@ export const dishes = [
     description: "Crispy rice crepe filled with spiced potato mixture",
     category: "Main Course",
     isVeg: true,
-    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc",
+    image:
+      "https://media.istockphoto.com/id/909906350/photo/masala-dosa-south-indian-food.jpg?s=612x612&w=0&k=20&c=3CI-bw2NhYaX_t0-CZIXIIXsOygFcUaoGSmzbnVB-fU=",
     customizations: [
       { name: "Spice Level", options: ["Mild", "Medium", "Hot"] },
       { name: "Instructions", string: "Extra crispy" },
@@ -229,7 +238,8 @@ export const dishes = [
     description: "Dosa with spicy red chutney and potato filling",
     category: "Main Course",
     isVeg: true,
-    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc",
+    image:
+      "https://media.istockphoto.com/id/469010591/photo/butter-plain-dosa-a-south-indian-pancake.jpg?s=612x612&w=0&k=20&c=0cmbPn7DN457AU_ocwh3v9WveBI-ERZAT--i1q43qD4=",
     customizations: [
       { name: "Spice Level", options: ["Mild", "Medium", "Hot"] },
       { name: "Instructions", string: "Extra chutney" },
@@ -240,7 +250,7 @@ export const dishes = [
     id: "D018",
     restaurantId: "R004",
     name: "Rava Idli",
-    price: 110,
+    price: 60,
     description: "Semolina steamed cakes served with chutney and sambar",
     category: "Breakfast",
     isVeg: true,
@@ -251,11 +261,12 @@ export const dishes = [
     id: "D019",
     restaurantId: "R004",
     name: "Onion Uttapam",
-    price: 130,
+    price: 80,
     description: "Thick rice pancake topped with onions and vegetables",
     category: "Main Course",
     isVeg: true,
-    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc",
+    image:
+      "https://media.istockphoto.com/id/656951130/photo/onion-uttapam.jpg?s=612x612&w=0&k=20&c=_jDsFQ9eA554dE1tqFXkk274MDvVk159PhabR72fY4g=",
     customizations: [
       { name: "Spice Level", options: ["Mild", "Medium", "Hot"] },
       { name: "Instructions", string: "Extra toppings" },
@@ -265,11 +276,12 @@ export const dishes = [
     id: "D020",
     restaurantId: "R004",
     name: "Filter Coffee",
-    price: 60,
+    price: 40,
     description: "Traditional South Indian coffee",
     category: "Beverages",
     isVeg: true,
-    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc",
+    image:
+      "https://www.whiskaffair.com/wp-content/uploads/2021/01/Filer-Coffee-2-1.jpg",
     customizations: [{ name: "Instructions", string: "Extra strong" }],
   },
 

@@ -36,7 +36,7 @@ const Hero = () => {
   return (
     <section className="relative">
       {/* Hero Banner */}
-      <div className="relative h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
+      <div className="relative h-[60vh] md:h-[70vh] lg:h-[60vh] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentImage}
@@ -65,18 +65,10 @@ const Hero = () => {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
-            >
-              Delicious Food Delivered To Your Doorstep
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl text-white/90 mb-8"
+              className="text-2xl md:text-5xl lg:text-4xl font-bold text-white mb-6 align-bottom "
             >
               Order from your favorite restaurants with exclusive offers
-            </motion.p>
+            </motion.h1>
           </div>
         </div>
       </div>

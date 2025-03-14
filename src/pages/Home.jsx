@@ -3,6 +3,7 @@ import Hero from "../componenet/Hero/Hero";
 import Collection from "../componenet/Collection/Collection";
 import DishSuggestion from "../componenet/DishSuggestion/DishSuggestion";
 import NearbyRestaurant from "../componenet/NearbyRestaruent/NearbyRestaruent";
+import BottomNav from "../componenet/BottomNav/BottomNav";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Collection />
       <DishSuggestion />
       <NearbyRestaurant />
+      <BottomNav />
     </>
   );
 };

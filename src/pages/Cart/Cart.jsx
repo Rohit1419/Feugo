@@ -2,66 +2,83 @@ import React from "react";
 import { motion } from "framer-motion";
 import { BiTime } from "react-icons/bi";
 import { HiLocationMarker } from "react-icons/hi";
+import { Link } from "react-router-dom";
+import { useCart } from "../../componenet/Context/CartContext";
+import { restaurants } from "../../data/Restaruents";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  // Example cart data - replace with your actual cart state
-  const cartItems = [
-    {
-      id: 1,
-      name: "Butter Chicken",
-      price: 450,
-      quantity: 2,
-      isVeg: false,
-      specialInstructions: "Extra butter",
-    },
-  ];
+  const { cartItems, updateQuantity } = useCart();
+  console.log("cart page - Items:", cartItems);
 
-  const restaurantInfo = {
-    name: "Taj Mahal Kitchen",
-    deliveryTime: "30-35",
-    image: "restaurant-image.jpg",
-  };
+  const restaurant =
+    cartItems.length > 0
+      ? restaurants.find((r) => r.id === cartItems[0].restaurantId)
+      : null;
 
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  const deliveryFee = 40;
+
   const platformFee = 20;
-  const taxes = Math.round(subtotal * 0.05);
-  const total = subtotal + deliveryFee + platformFee + taxes;
+  const taxes = Math.round(subtotal * 0.18);
+  const total = subtotal + platformFee + taxes;
+
+  const navigate = useNavigate();
+
+  const handlePlaceOrder = () => {
+    navigate("/order-placed", {
+      state: {
+        total: total,
+        restaurant: restaurant,
+      },
+    });
+  };
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 pt-20 flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-900">
+            Your cart is empty
+          </h2>
+          <p className="text-gray-600 mt-2">
+            Add items from a restaurant to start an order
+          </p>
+          <Link
+            to="/"
+            className="mt-6 inline-block bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors"
+          >
+            Browse Restaurants
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
       <div className="max-w-3xl mx-auto px-4 py-8">
         {/* Restaurant Info */}
-        <div className="bg-white rounded-xl p-4 mb-6 flex items-center gap-4">
-          <img
-            src={restaurantInfo.image}
-            alt={restaurantInfo.name}
-            className="w-16 h-16 rounded-lg object-cover"
-          />
-          <div>
-            <h2 className="font-medium text-gray-900">{restaurantInfo.name}</h2>
-            <div className="flex items-center gap-2 text-sm text-gray-500 mt-1">
-              <BiTime />
-              <span>{restaurantInfo.deliveryTime} mins delivery</span>
+        {restaurant && (
+          <Link to={`/restaurant/${restaurant.id}`}>
+            <div className="bg-white rounded-xl p-4 mb-6 flex items-center gap-4 hover:shadow-md transition-shadow">
+              <img
+                src={restaurant.image}
+                alt={restaurant.name}
+                className="w-16 h-16 rounded-lg object-cover"
+              />
+              <div>
+                <h2 className="font-medium text-gray-900">{restaurant.name}</h2>
+                <div className="flex items-center gap-2 text-sm text-gray-500 mt-1">
+                  <BiTime />
+                  <span>{restaurant.deliveryTime} mins delivery</span>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-
-        {/* Delivery Address */}
-        <div className="bg-white rounded-xl p-4 mb-6">
-          <div className="flex items-start gap-3">
-            <HiLocationMarker className="text-xl text-gray-400 mt-1" />
-            <div>
-              <h3 className="font-medium text-gray-900">Delivery Address</h3>
-              <p className="text-sm text-gray-600 mt-1">
-                123 Main Street, Apartment 4B
-              </p>
-            </div>
-          </div>
-        </div>
+          </Link>
+        )}
 
         {/* Cart Items */}
         <div className="bg-white rounded-xl p-4 mb-6">
@@ -91,13 +108,21 @@ const Cart = () => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex items-center bg-gray-100 rounded-lg">
-                  <button className="px-3 py-1 text-gray-600 hover:bg-gray-200">
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                    className="px-3 py-1 text-gray-600 hover:bg-gray-200"
+                  >
                     -
-                  </button>
+                  </motion.button>
                   <span className="px-3 py-1">{item.quantity}</span>
-                  <button className="px-3 py-1 text-gray-600 hover:bg-gray-200">
+                  <motion.button
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                    className="px-3 py-1 text-gray-600 hover:bg-gray-200"
+                  >
                     +
-                  </button>
+                  </motion.button>
                 </div>
                 <span className="font-medium">
                   ₹{item.price * item.quantity}
@@ -115,10 +140,7 @@ const Cart = () => {
               <span className="text-gray-500">Item Total</span>
               <span>₹{subtotal}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-gray-500">Delivery Fee</span>
-              <span>₹{deliveryFee}</span>
-            </div>
+
             <div className="flex justify-between">
               <span className="text-gray-500">Platform Fee</span>
               <span>₹{platformFee}</span>
@@ -137,7 +159,8 @@ const Cart = () => {
         {/* Place Order Button */}
         <motion.button
           whileTap={{ scale: 0.98 }}
-          className="w-full bg-amber-500 text-white py-4 rounded-xl font-medium hover:bg-amber-600 transition-colors"
+          onClick={handlePlaceOrder}
+          className="w-full bg-red-500 text-white py-4 rounded-xl font-medium hover:bg-red-600 transition-colors shadow-lg shadow-red-500/20"
         >
           Place Order • ₹{total}
         </motion.button>
