@@ -21,7 +21,7 @@ const Cart = () => {
     0
   );
 
-  const platformFee = 20;
+  const platformFee = 10;
   const taxes = Math.round(subtotal * 0.18);
   const total = subtotal + platformFee + taxes;
 
