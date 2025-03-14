@@ -114,7 +114,7 @@ const Orders = () => {
           </div>
         )}
       </motion.div>
-      Only show BottomNav on mobile
+
       <div className="md:hidden">
         <BottomNav />
       </div>
